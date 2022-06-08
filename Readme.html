@@ -1,0 +1,145 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.76 (Macintosh; U; PPC) [Netscape]">
+   <meta name="Author" content="Joseph C. Slater">
+   <meta name="Description" content="ACSII File Conversion Software">
+   <title>Readme.html</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#551A8B" alink="#0000FF">
+
+<h1>
+No-name File Type Converters:</h1>
+
+<!--<b><i>Warning:</i> The old scripts for Windows and Classic MacOS contain an error that can lead to serious damage to the converted files.</b> This is most likely to effect Mac users. If you use dos2mac on a unix file, or dos2unix on a mac file, you may and up with a file with no end of line characters at all! I no longer have Perl for either of those platforms. If you are concerned that you might make this mistake, please download the raw scripts. Your browser should fix the end of line characters. Then use your Perl installation to make applications/drag and drops as per the instructions in your installation. -->
+
+<p>The scripts in this folder are written to convert a bunch of files
+from one end of line format to another (see background). They are written in PERL,
+and PERL must be installed on your system in order to run them. Go to <a href="http://www.cpan.org/ports/index.html">http://www.cpan.org/ports/index.html
+</a>to get it for free. If you have a UNIX system, it's probably already installed. If you are running Linux, it's probably on your CD, if not already installed (see the UNIX section). The scripts are much shorter than this web page, so I'm going to be brief here.
+<br>
+<h2>
+Description:</h2>
+<h3>
+UNIX</h3>
+
+The files with no extension are the actual PERL code. You should be able
+to install this on a UNIX machine (maybe even a Windows machine) so file
+conversions can be performed on any platform. To run them:</li>
+
+<ol>
+<li>
+The first line should be changed to point to the PERL executable on the
+UNIX system. On my UNIX system, the first line reads #<tt>!/usr/local/bin/perl</tt> .
+On yours, it's probably different. On Linux, the first line should (at
+least on my installations) be <tt>#!/usr/local/perl</tt> . (That period ended
+the sentence, don't include it.) If you can't find out where or if PERL
+is installed, type <tt>which perl.</tt> If it's installed, the path will
+be returned.</li>
+
+
+<li>
+In the directory where all of the files are, type <tt>chmod 755 *</tt>. This will set the necessary file permissions.</li>
+
+<li>
+To use them, type (for example): <tt>unix2mac</tt> "filenames". Don't type the quotes. Just
+the filenames separated by spaces. You can also use wildcards (just like
+any other UNIX command). There are really two sets of scripts here. The scripts starting with '2' will work regardless of what the current EOL characters are. However, they are twice as slow (half as fast?) as the other files. The advantage of them is that they handle mixed and unknown line endings.</li>
+
+<li>
+You may discard the Drop* files. They are useful only on MacOS X.</li>
+
+</ol>
+
+<h3>
+Mac OSX</h3>
+
+<ol>
+Move nnfc.tgz where you want the directory of files to be places. Open it with 
+Stuffit or with <tt>tar xzvf nnfc.tgz</tt> from a terminal prompt. If you look at the files you'll note 6 that start with the word "Drop".
+You can use these from the MacOS X GUI to drag files and convert them. The other files can be called from the command line as long as they can be found in your unix path. See the unix instructions.   <br> The Drop applications were created using DropScript, a wonderful application that you can find at http://www.versiontracker.com for converting unix scripts into mac droppable applications.
+</ol>
+
+<h3>Mac Classic: If you are still using Mac Classic (pre X MacOS)</h3>
+<ol>
+You can make dropable scripts using MacPerl.  If you do this, please send me a copy and I will post them.
+</ol>
+
+<h3>
+Windows</h3>
+<ol>
+If you ever make drag/drop scripts for windows, please send them to me and I will post them. 
+<br> <br>
+For command line execution: 
+A summary of the instructions are: Install PERL, install these scripts,
+assign the extension .<tt>pl</tt> to the perl application (I haven't figured
+out how to do this, but it shouldn't be too hard). Rename all of these
+scripts to have the extension .<tt>pl.</tt> 
+Then you can convert files by typing something like <tt>mac2dos.pl macfilename.txt</tt>.
+If you don't assign .<tt>pl</tt> to PERL, they you have to type the command
+PERL before the script name (e.g.<tt> perl mac2dos.pl macfilename.txt</tt>).
+If that's the case, though, there is no point in changing all of the script
+names to <tt>*.pl</tt>.
+</ol>
+
+<h3>
+What will happen when I run a script?</h3>
+The end of line characters will be converted.
+
+<h3>
+Why are the files starting with '2' half as fast?</h3>
+They do the EOL conversion twice. The first time to an intermediary format, the second to the final EOL format. 
+
+<h3>
+What if I have mixed line endings?</h3>
+The scripts starting with '2' will change any EOL character/s to the desired EOL characters, so although these are half as fast, they will work nicely.
+
+<h3>Is there any 'danger' in using these codes?</h3>
+Only the ones in the 'Extras' folder. If you tend to be error prone, don't use the script/files with 'mac2' or 'unix2' in their names (in the extras folder). These scripts very explicitely turn carriage returns into line feeds, and visa-versa. The problem with this approach is that when accidentally applied to a DOS (windows) style file, you and up with double line breaks. 
+
+<h3>
+What will happen if my machine crashes in the middle of a conversion?</h3>
+a) You will have two files, the original with the same name it had before, plus another with the same name plus the extension .con. Delete the .con file and start again.<br>
+b) You will have the .con file plus another file with the name of the original plus an extension like .unix or .dos. Rename the .con file to the original file name. Delete the other file. You are done. 
+
+For the MacOS Classic and Windows versions: The old files, in the old ASCII format will have the same filename with their format attached (e.g. using <tt>mac2unix</tt>
+on <tt>temp.ps</tt> will make a file <tt>temp.ps</tt> in UNIX format, and
+put the old file in <tt>temp.ps.mac</tt>).
+
+<h3>Other notes:</h3>
+On a PC, you will have to edit the 
+files as they are shown in the MacOSX distribution. If anyone ever repackages them for PC, I'll be happy to post them. I don't have Perl installed on my PC anymore. MacOS 9 is dying, so I'm not going to go back and fix those scripts either, but if you have Perl, you can do it easily yourself observing the scripts (just one line difference near the end).
+<p>Questions, comments, concerns, and better yet, improvements?
+<p>Web page: <a href="http://www.cs.wright.edu/~jslater/nnfc">http://www.cs.wright.edu/~jslater/nnfc</a>
+<p><tt><a href="mailto:joseph.slater@wright.edu">joseph.slater@wright.edu</a></tt>
+<br>&nbsp;
+<h2>
+Background:</h2>
+UNIX&reg; machines end lines with a linefeed. Macs&reg; (OS 9.x and earlier)
+end lines in a carriage return. PCs end line in a carriage return/linefeed.
+This is done to drive the rest of the world crazy. Yes, it actually is
+a conspiracy.
+<h2>
+Download:</h2>
+<a href="http://www.cs.wright.edu/~jslater/nnfc.zip">zip Format</a>
+<br>&nbsp;
+
+<h2>
+Other Stuff:</h2>
+Copyright (C) 2001 Joseph C. Slater
+<p>This program is free software; you can redistribute it and/or modify
+it under the terms of the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a> as published by the Free Software Foundation.
+<p>This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+for more details.
+<p>You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+<p>Mac is a registered trademark of Apple Computer, Inc. UNIX is a registered
+trademark of Open Group. Windows is a registered trademark of MicroSoft,
+Inc.
+<br>&nbsp;
+</body>
+</html>

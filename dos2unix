@@ -1,0 +1,19 @@
+#!/usr/bin/perl 
+{
+    foreach $inFileName (@ARGV) {
+	open INTEXTFILE , $inFileName;
+	open OUTTEXTFILE, ">". $inFileName . ".con";
+        binmode OUTTEXTFILE;
+        binmode INTEXTFILE;
+	@textFile = <INTEXTFILE>;
+	foreach $textline (@textFile) {
+	    	$textline =~ s/\x0d\x0a/\x0a/g;
+		print OUTTEXTFILE $textline ;
+	};
+	close (INTEXTFILE);
+	close (OUTTEXTFILE);
+	rename($inFileName,$inFileName . ".dos");
+	rename($inFileName . ".con",$inFileName);
+	unlink($inFileName . ".dos");
+    }
+}
