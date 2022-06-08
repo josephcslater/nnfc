@@ -101,9 +101,6 @@ one line difference near the end).
 
 Questions, comments, concerns, and better yet, improvements?
 
-Web page: http://www.cs.wright.edu/~jslater/nnfc
-
-| joseph.slater@wright.edu
 |  
 
 Background:
@@ -114,11 +111,6 @@ lines in a carriage return. PCs end line in a carriage return/linefeed.
 This is done to drive the rest of the world crazy. Yes, it actually is a
 conspiracy.
 
-Download:
----------
-
-| `zip Format <http://www.cs.wright.edu/~jslater/nnfc.zip>`__
-|  
 
 Other Stuff:
 ------------
