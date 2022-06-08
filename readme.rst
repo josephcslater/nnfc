@@ -1,6 +1,8 @@
 No-name File Type Converters:
 =============================
 
+| These work, are dated, but I thought I should share them. 
+
 | The scripts in this folder are written to convert a bunch of files
   from one end of line format to another (see background). They are
   written in PERL, and PERL must be installed on your system in order to
